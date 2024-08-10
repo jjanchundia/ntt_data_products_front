@@ -1,0 +1,36 @@
+<h2>Formulario de Registro</h2>
+
+<form #productForm="ngForm">
+  <div>
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" ngModel required>
+  </div>
+
+  <div>
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" ngModel required>
+  </div>
+
+  <div>
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" ngModel required>
+  </div>
+
+  <div>
+    <label for="logo">Logo:</label>
+    <input type="text" id="logo" name="logo" ngModel required>
+  </div>
+
+  <div>
+    <label for="date_release">Fecha de Liberación:</label>
+    <input type="date" id="date_release" name="date_release" ngModel required>
+  </div>
+
+  <div>
+    <label for="date_revision">Fecha de Revisión:</label>
+    <input type="date" id="date_revision" name="date_revision" ngModel required>
+  </div>
+
+  <button type="button" (click)="resetForm(productForm)">Reiniciar</button>
+  <button type="submit" (click)="submitForm(productForm)">Enviar</button>
+</form>

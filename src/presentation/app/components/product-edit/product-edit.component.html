@@ -6,57 +6,69 @@
     <div class="form-row">
         <div class="form-group">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" [(ngModel)]="product.id" class="input-field" disabled="disabled"
-                required>
-            <!-- <span class="error-message" *ngIf="!productForm.form.controls.id?.valid && productForm.form.controls.id?.touched">
-        ¡ID no válido!
-      </span> -->
+            <input type="text" id="id" name="id" [(ngModel)]="product.id" class="input-field" readonly required>
         </div>
-
         <div class="form-group">
             <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="product.name" class="input-field" required>
-            <!--     
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name" ngModel required class="input-field"> -->
+            <input type="text" id="name" name="name" [(ngModel)]="product.name" required minlength="5" maxlength="100"
+                class="input-field"
+                [ngClass]="{'input-error': !productForm.form.controls['name']?.valid && productForm.form.controls['name']?.touched}">
+            <span class="error-message"
+                *ngIf="!productForm.form.controls['name']?.valid && productForm.form.controls['name']?.touched">
+                ¡Nombre no válido!
+            </span>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
             <label for="description">Descripción:</label>
-            <input type="text" id="description" name="description" [(ngModel)]="product.description" class="input-field"
-                required>
-            <!-- <span class="error-message" *ngIf="!productForm.form.controls.description?.valid && productForm.form.controls.description?.touched">
-        ¡Este campo es requerido!
-      </span> -->
+            <input type="text" id="description" name="description" [(ngModel)]="product.description" required
+                minlength="10" maxlength="200" class="input-field"
+                [ngClass]="{'input-error': !productForm.form.controls['description']?.valid && productForm.form.controls['description']?.touched}">
+            <span class="error-message"
+                *ngIf="!productForm.form.controls['description']?.valid && productForm.form.controls['description']?.touched">
+                ¡Descripción no válida!
+            </span>
         </div>
 
         <div class="form-group">
             <label for="logo">Logo:</label>
-            <input type="text" id="logo" name="logo" class="input-field" [(ngModel)]="product.logo" required>
-            <!-- <span class="error-message" *ngIf="!productForm.form.controls.logo?.valid && productForm.form.controls.logo?.touched">
-        ¡Este campo es requerido!
-      </span> -->
+            <input type="text" id="logo" name="logo" [(ngModel)]="product.logo" required class="input-field"
+                [ngClass]="{'input-error': !productForm.form.controls['logo']?.valid && productForm.form.controls['logo']?.touched}">
+            <span class="error-message"
+                *ngIf="!productForm.form.controls['logo']?.valid && productForm.form.controls['logo']?.touched">
+                ¡Logo no válido!
+            </span>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
             <label for="date_release">Fecha de Liberación:</label>
-            <input type="date" id="date_release" name="date_release" [(ngModel)]="product.date_release"
-                class="input-field" required>
+            <input type="date" id="date_release" name="date_release" [(ngModel)]="product.date_release" required
+                (change)="validateReleaseDate(productForm)" class="input-field"
+                [ngClass]="{'input-error': !productForm.form.controls['date_release']?.valid && productForm.form.controls['date_release']?.touched}">
+            <span class="error-message"
+                *ngIf="!productForm.form.controls['date_release']?.valid && productForm.form.controls['date_release']?.touched">
+                ¡Fecha de liberación no válida!
+            </span>
         </div>
 
         <div class="form-group">
             <label for="date_revision">Fecha de Revisión:</label>
             <input type="date" id="date_revision" name="date_revision" [(ngModel)]="product.date_revision" required
+                [ngClass]="{'input-error': !productForm.form.controls['date_revision']?.valid && productForm.form.controls['date_revision']?.touched}"
                 class="input-field">
+            <span class="error-message"
+                *ngIf="!productForm.form.controls['date_revision']?.valid && productForm.form.controls['date_revision']?.touched">
+                ¡Fecha de revisión no válida!
+            </span>
         </div>
     </div>
 
     <div class="button-group">
-        <button type="button" (click)="resetForm(productForm)" class="button reset-button">Reiniciar</button>
+        <button type="button" routerLink="/" class="button reset-button">Volver</button>
         <button type="submit" (click)="submitForm(productForm)" class="button submit-button">Enviar</button>
     </div>
 </form>

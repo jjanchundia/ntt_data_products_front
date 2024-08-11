@@ -30,12 +30,6 @@ export class ProductImplementationRepository extends ProductRepository {
             .pipe(map(this.productMapper.mapFrom));
     }
 
-    // delete(id: string): Observable<string> {
-    //     return this.http
-    //         .delete<string>('http://localhost:3002/bp/products/'+id) // Envía los parámetros directamente
-    //         .pipe(map(this.productMapper.mapFrom));
-    // }
-    
     delete(productId: string): Observable<void> {
         return this.http
             .delete<void>(`http://localhost:3002/bp/products/${productId}`);

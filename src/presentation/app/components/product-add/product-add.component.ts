@@ -12,7 +12,7 @@ export class ProductAddComponent {
 
   constructor(
     private productRegister: ProductRegisterUseCase,
-    private router: Router // Inyectamos el servicio Router
+    private router: Router
   ) { }
 
   resetForm(form: NgForm) {
@@ -27,6 +27,30 @@ export class ProductAddComponent {
       this.router.navigate(['']);
     }
   }
+  
+  validateReleaseDate(form: NgForm) {
+    const releaseDateControl = form.form.controls['date_release'];
+    const revisionDateControl = form.form.controls['date_revision'];
+  
+    if (releaseDateControl && revisionDateControl) {
+      const releaseDate = new Date(releaseDateControl.value);
+      const revisionDate = new Date(revisionDateControl.value);
+  
+      if (releaseDate < new Date()) {
+        releaseDateControl.setErrors({ invalidDate: true });
+      } else {
+        releaseDateControl.setErrors(null);
+      }
+  
+      if (revisionDate.getFullYear() !== releaseDate.getFullYear() + 1 || 
+          revisionDate.getMonth() !== releaseDate.getMonth() || 
+          revisionDate.getDate() !== releaseDate.getDate()) {
+        revisionDateControl.setErrors({ invalidDate: true });
+      } else {
+        revisionDateControl.setErrors(null);
+      }
+    }
+  } 
 
   getRegister(product: any) {
     this.productRegister.execute({

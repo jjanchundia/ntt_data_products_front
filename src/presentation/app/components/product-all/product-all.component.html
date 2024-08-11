@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
-        <td><img src="path_to_logo.png" alt="Logo" class="product-logo" /></td>
+        <td><img src="{{ product.logo }}" alt="Logo" class="product-logo" /></td>
         <td>{{ product.name }}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.date_release }}</td>

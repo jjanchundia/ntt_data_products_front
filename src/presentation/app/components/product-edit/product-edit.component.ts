@@ -52,6 +52,30 @@ export class ProductEditComponent implements OnInit {
     }
   }
    
+  validateReleaseDate(form: NgForm) {
+    const releaseDateControl = form.form.controls['date_release'];
+    const revisionDateControl = form.form.controls['date_revision'];
+  
+    if (releaseDateControl && revisionDateControl) {
+      const releaseDate = new Date(releaseDateControl.value);
+      const revisionDate = new Date(revisionDateControl.value);
+  
+      if (releaseDate < new Date()) {
+        releaseDateControl.setErrors({ invalidDate: true });
+      } else {
+        releaseDateControl.setErrors(null);
+      }
+  
+      if (revisionDate.getFullYear() !== releaseDate.getFullYear() + 1 || 
+          revisionDate.getMonth() !== releaseDate.getMonth() || 
+          revisionDate.getDate() !== releaseDate.getDate()) {
+        revisionDateControl.setErrors({ invalidDate: true });
+      } else {
+        revisionDateControl.setErrors(null);
+      }
+    }
+  }
+  
   getUpdate(product: ProductModel) {
     this.productUpdate.execute({
       id: product.id ?? "",

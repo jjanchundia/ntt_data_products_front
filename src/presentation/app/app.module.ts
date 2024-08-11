@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { DataModule } from 'src/data/data.module';
 import { ProductAllComponent } from './components/product-all/product-all.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductAllComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,

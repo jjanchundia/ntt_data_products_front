@@ -1,36 +1,55 @@
-<h2>Formulario de Registro</h2>
+<div class="divCenter">
+  <h2>Formulario de Registro</h2>
+</div>
 
-<form #productForm="ngForm">
-  <div>
-    <label for="id">ID:</label>
-    <input type="text" id="id" name="id" ngModel required>
+<form #productForm="ngForm" class="form-container">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" ngModel required class="input-field">
+      <!-- <span class="error-message" *ngIf="!productForm.form.controls.id?.valid && productForm.form.controls.id?.touched">
+        ¡ID no válido!
+      </span> -->
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" ngModel required class="input-field">
+    </div>
   </div>
 
-  <div>
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" ngModel required>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <input type="text" id="description" name="description" ngModel required class="input-field">
+      <!-- <span class="error-message" *ngIf="!productForm.form.controls.description?.valid && productForm.form.controls.description?.touched">
+        ¡Este campo es requerido!
+      </span> -->
+    </div>
+
+    <div class="form-group">
+      <label for="logo">Logo:</label>
+      <input type="text" id="logo" name="logo" ngModel required class="input-field">
+      <!-- <span class="error-message" *ngIf="!productForm.form.controls.logo?.valid && productForm.form.controls.logo?.touched">
+        ¡Este campo es requerido!
+      </span> -->
+    </div>
   </div>
 
-  <div>
-    <label for="description">Descripción:</label>
-    <input type="text" id="description" name="description" ngModel required>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="date_release">Fecha de Liberación:</label>
+      <input type="date" id="date_release" name="date_release" ngModel required class="input-field">
+    </div>
+
+    <div class="form-group">
+      <label for="date_revision">Fecha de Revisión:</label>
+      <input type="date" id="date_revision" name="date_revision" ngModel class="input-field">
+    </div>
   </div>
 
-  <div>
-    <label for="logo">Logo:</label>
-    <input type="text" id="logo" name="logo" ngModel required>
+  <div class="button-group">
+    <button type="button" (click)="resetForm(productForm)" class="button reset-button">Reiniciar</button>
+    <button type="submit" (click)="submitForm(productForm)" class="button submit-button">Enviar</button>
   </div>
-
-  <div>
-    <label for="date_release">Fecha de Liberación:</label>
-    <input type="date" id="date_release" name="date_release" ngModel required>
-  </div>
-
-  <div>
-    <label for="date_revision">Fecha de Revisión:</label>
-    <input type="date" id="date_revision" name="date_revision" ngModel required>
-  </div>
-
-  <button type="button" (click)="resetForm(productForm)">Reiniciar</button>
-  <button type="submit" (click)="submitForm(productForm)">Enviar</button>
 </form>

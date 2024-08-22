@@ -75,6 +75,6 @@
   <div class="button-group">
     <button type="submit" routerLink="/" class="button return-button">Volver</button>
     <button type="button" (click)="resetForm(productForm)" class="button reset-button">Reiniciar</button>
-    <button type="submit" class="button submit-button" [disabled]="!productForm.valid">Enviar</button>
+    <button type="submit" id="btnEnviar" class="button submit-button" [disabled]="!productForm.valid">Enviar</button>
   </div>
 </form>
